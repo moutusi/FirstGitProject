@@ -1,0 +1,62 @@
+<div ng-controller="myformController">
+
+    <form  name="u_form" class="form_style">
+
+        Name: <input type="text" name="u_name" placeholder="Enter your name" ng-model="user.name" required><br>
+
+        Email: <input type="email" name="u_email" placeholder="user@something.com" ng-model="user.email" required><br>
+        <span ng-show="u_form.u_email.$error.required"> What is your email address? </span>
+        <span ng-show="u_form.u_email.$error.email"> Invalid email address? </span><br>
+
+        Gender: <input type="radio" ng-model="user.gender" value="male" />male
+        <input type="radio" ng-model="user.gender" value="female" />female<br />
+
+        <input type="checkbox" name="u_agree" value="agree" ng-model="user.agree" required> I Agree :
+        <input type="text" name="u_sign" ng-model="user.sign" placeholder="User signature" ng-show="user.agree"><br>
+
+        <button ng-click="reset()" ng-disabled="isUnchanged(user)"> Reset </button>
+        <button ng-click="save(user)" ng-disabled="u_form.$invalid"> save </button>
+        <button ng-click="timepicker()"> TIME PICKER </button>
+
+    </form><br>
+
+    <pre> Form Result: {{user | json}}</pre>
+    <pre> Final Result: {{a | json}}</pre><br>
+
+    <pre class="alert alert-info">Time is: {{mytime1 | date:'shortTime' }}</pre>
+
+    <!--example one-->
+<h3>Example 1: </h3>
+    <div>
+        <input type="text" class="form-control" title="{{popover.title}}" data-ng-model="mytime1" data-content="{{popover.content}}" data-template="js/Views/timePicker.tpl.html"
+                data-animation="am-flip-x" data-placement="top" data-auto-close="1" bs-popover>
+    </div><br>
+
+    <!--example two-->
+    <h3 style="margin-top: 35px">Example 2: </h3>
+    <div >
+        <input type="text" class="form-control" size="8" data-ng-model="mytime1"  data-autoclose="1" placeholder="Time" data-placement="top" data-arrow-behavior="picker" name="time" bs-timepicker>
+    </div>
+
+
+
+    <!--<div><input type="text" tooltip-trigger="click" data-ng-model="mytime" data-tooltip-html-unsafe="{{showTime}}" data-tooltip-placement="top"></div>-->
+
+    <!--<div><input type="text" data-ng-model="mytime" ng-click="showpop()"  popover-placement="top"></div><br>-->
+
+    <!--<div><input type="text" data-ng-model="mytime" popover="{{popover.template}}"  popover-placement="top"></div><br>-->
+
+    <!--<script type="text/ng-template" id="templateId.html">-->
+        <!--<timepicker ng-model="mytime" ng-change="changed()" hour-step="hstep" minute-step="mstep"></timepicker>-->
+    <!--</script>-->
+
+    <!--<div><input type="text" data-ng-model="mytime" mypopover data-placement="right"></div><br>-->
+
+
+    <!--<button type="button" class="btn btn-lg btn-danger" title="{{popover.title}}" data-content="{{popover.content}}" data-template="js/Views/timePicker.tpl.html" data-animation="am-flip-x" data-auto-close="1" bs-popover>Custom Popover-->
+        <!--<br>-->
+        <!--<small>(using data-template)</small>-->
+    <!--</button>-->
+
+
+</div>
